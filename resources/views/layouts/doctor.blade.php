@@ -10,7 +10,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>CoreUI Pro Bootstrap Admin Template</title>
+    <title>Doctor dashboard</title>
 
     <link href="./core-ui_files/style.css" rel="stylesheet">
     <link href="./core-ui_files/pace.min.css" rel="stylesheet">
@@ -99,28 +99,8 @@
             </li>
             <li class="c-sidebar-nav-title">Menu</li>
             <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link" href="{{ url('admin/home') }}">
+                <a class="c-sidebar-nav-link" href="{{ url('doctor/home') }}">
                     <i class="fas fa-home mr-3" style="font-size: 18px"></i> Home
-                </a>
-            </li>
-            <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link" href="{{ url('admin/patients') }}">
-                    <i class="fas fa-user mr-3" style="font-size: 18px"></i> Patients
-                </a>
-            </li>
-            <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link" href="{{ url('admin/doctors') }}">
-                    <i class="fas fa-user-md mr-3" style="font-size: 18px"></i> Doctors
-                </a>
-            </li>
-            <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link" href="{{ url('admin/convenants') }}">
-                    <i class="fas fa-user-friends mr-3" style="font-size: 18px"></i> Convenants 
-                </a>
-            </li>
-            <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link" href="{{ url('/admin/documents') }}">
-                    <i class="fas fa-file mr-3" style="font-size: 18px"></i> Documents
                 </a>
             </li>
             {{-- <li class="c-sidebar-nav-title">Components</li>
