@@ -94,7 +94,7 @@
         <ul class="c-sidebar-nav ps ps--active-y" data-drodpown-accordion="true">
             <li class="c-sidebar-nav-item">
                 <a class="c-sidebar-nav-link c-active">
-                    <i class="fas fa-tachometer-alt mr-3" style="font-size: 18px"></i>  Dashboard
+                    <i class="fas fa-tachometer-alt mr-3" style="font-size: 18px"></i>  Patient Dashboard
                 </a>
             </li>
             <li class="c-sidebar-nav-title">Menu</li>

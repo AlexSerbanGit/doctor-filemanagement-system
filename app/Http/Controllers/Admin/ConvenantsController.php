@@ -19,7 +19,7 @@ class ConvenantsController extends Controller
     public function add(Request $request){
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191', 
-            'email' => 'required|string|max:191',
+            'email' => 'required|string|max:191|unique:users',
             'password' => 'required|string|max:191',
         ]);
 
@@ -40,7 +40,7 @@ class ConvenantsController extends Controller
     public function edit(Request $request, $id){
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191', 
-            'email' => 'required|string|max:191',
+            'email' => 'required|string|max:191|unique:users',
         ]);
     
         if($validator->fails()){

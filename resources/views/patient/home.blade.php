@@ -17,18 +17,48 @@
             </tr>
         </thead>
         <tbody>
+            @foreach (Auth::user()->documents as $document)                
             <tr>
-                <th scope="row">1</th>
-                <td>image1.png</td>
-                <td>
-                    <button class="btn btn-success"><i class="fas fa-download"></i></button>
-                    <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                </td>
+            <th scope="col">#</th>
+            <th scope="col">{{$document->title}}</th>
+            <td>
+                <a download="{{$document->id.'.'.$document->extension}}" href="{{ url('/gg/'.$document->id.'.'.$document->extension) }}"><button class="btn btn-success"><i class="fas fa-download"></i></button></a>                {{-- <button class="btn btn-danger"><i class="fas fa-trash"></i></button> --}}
+            </td>            
             </tr>
+            @endforeach
         </tbody>
         </table>
 
-        <button class="btn btn-success"><i class="fas fa-eye"></i> See document </button>
+        <a href="{{ url('/document-search') }}"><button class="btn btn-success"><i class="fas fa-eye"></i> See document </button></a>
+    
+        <!-- Modal -->
+        <div class="modal fade" id="viewDocument" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal view document</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Document protocol:</label>
+                    <input type="text" placeholder="protocol" name="protocol" required class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Document password:</label>
+                    <input type="text" placeholder="password" name="password" required class="form-control">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success">Search <i class="fas fa-search"></i></button>
+            </div>
+            </div>
+        </div>
+        </div>
+        
     </div>
 
 </div>

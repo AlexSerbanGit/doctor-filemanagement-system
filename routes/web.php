@@ -112,3 +112,12 @@ Route::group(['name' => 'doctor', 'middleware' => ['auth', 'isDoctor'], 'prefix'
     Route::get('/home', 'Doctor\HomeController@index')->name('Home');
 
 });
+
+Route::get('/document-search', function(){
+    return view('document-search');
+});
+
+Route::post('/search-document', 'PublicController@searchDocument')->name('Search for document route');
+
+Route::get('/add_to_your_account/{patient_protocol}/{patient_password}', 'PublicController@addToAcc')->name('Add files to your account')->middleware('auth');
+

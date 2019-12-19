@@ -60,11 +60,37 @@ class DemoCron extends Command
                 $document->role_id = 2;
                 $document->patient_name = $strr[1];
                 $document->patient_protocol = $strr[3];
-                $document->patient_password = $strr[4];
+                $last = explode('.', $strr[4]);
+                $document->patient_password = $last[0];
                 $document->save();
+                $move = File::move(public_path('gallery\\'.$filess[$key]->getRelativePathname()), public_path('\gg\\'.$document->id.'.'.File::extension($file)));
+
+            }elseif(strpos($strr[0], '_C') !== false){
+                \Log::info('convenant file');
+                $document = new Document;
+                $document->title = $filess[$key]->getRelativePathname();
+                $document->extension = File::extension($file);
+                $document->role_id = 2;
+                $document->patient_name = $strr[1];
+                $last = explode('.', $strr[3]);
+                $document->agreement_code = $last[0];
+                $document->save();
+                $move = File::move(public_path('gallery\\'.$filess[$key]->getRelativePathname()), public_path('\gg\\'.$document->id.'.'.File::extension($file)));
+
+            }elseif(strpos($strr[0], '_M') !== false){
+                \Log::info('doctor file');
+                $document = new Document;
+                $document->title = $filess[$key]->getRelativePathname();
+                $document->extension = File::extension($file);
+                $document->role_id = 2;
+                $document->patient_name = $strr[1];
+                $last = explode('.', $strr[3]);
+                $document->doctor_code = $last[0];
+                $document->save();
+                $move = File::move(public_path('gallery\\'.$filess[$key]->getRelativePathname()), public_path('\gg\\'.$document->id.'.'.File::extension($file)));
+
             }
 
-            $move = File::move(public_path('gallery\\'.$filess[$key]->getRelativePathname()), public_path('\gg\\'.$document->id.'.'.File::extension($file)));
             // do whatever with $file;
         }
 
