@@ -40,7 +40,7 @@ class ConvenantsController extends Controller
     public function edit(Request $request, $id){
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191', 
-            'email' => 'required|string|max:191|unique:users',
+            // 'email' => 'required|string|max:191|unique:users',
         ]);
     
         if($validator->fails()){
@@ -50,7 +50,7 @@ class ConvenantsController extends Controller
         $user = User::find($id);
         if($user && $user->role_id == 3){
             $user->name = $request->name;
-            $user->email = $request->email;
+            // $user->email = $request->email;
             $user->save();
     
             return redirect()->back()->with('success', 'Convenant updated!');

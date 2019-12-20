@@ -17,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (Auth::user()->documents as $document)                
+            @foreach ($documents as $document)                
             <tr>
             <th scope="col">#</th>
             <th scope="col">{{$document->title}}</th>

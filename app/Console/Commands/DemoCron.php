@@ -70,7 +70,7 @@ class DemoCron extends Command
                 $document = new Document;
                 $document->title = $filess[$key]->getRelativePathname();
                 $document->extension = File::extension($file);
-                $document->role_id = 2;
+                $document->role_id = 3;
                 $document->patient_name = $strr[1];
                 $last = explode('.', $strr[3]);
                 $document->agreement_code = $last[0];
@@ -82,7 +82,7 @@ class DemoCron extends Command
                 $document = new Document;
                 $document->title = $filess[$key]->getRelativePathname();
                 $document->extension = File::extension($file);
-                $document->role_id = 2;
+                $document->role_id = 4;
                 $document->patient_name = $strr[1];
                 $last = explode('.', $strr[3]);
                 $document->doctor_code = $last[0];
