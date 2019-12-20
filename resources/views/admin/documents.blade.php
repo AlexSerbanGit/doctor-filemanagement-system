@@ -24,14 +24,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($documents as $document)
+                @foreach($documents as $key=>$document)
                 <tr>
                     <th><input type="checkbox" name="check[{{$document->id}}]"></th>
-                    <th scope="row">1</th>
+                    <th scope="row">{{$key+1}}</th>
                     <td>{{$document->title}}</td>
                     <td>@if($document->role_id == 2) Patient @elseif($document->role_id == 3) Convenant @elseif($document->role_id == 4) Doctor @endif</td>
                     <td>    
-                        <a download="{{$document->id.'.'.$document->extension}}" href="{{ url('/gg/'.$document->id.'.'.$document->extension) }}"><button class="btn btn-success"><i class="fas fa-download"></i></button></a>
+                        <a download="{{$document->id.'.'.$document->extension}}" href="{{ url('/gg/'.$document->id.'.'.$document->extension) }}"><button type="button" class="btn btn-success"><i class="fas fa-download"></i></button></a>  
                         <a href="{{ url('admin/delete_document/'.$document->id) }}"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a>
                     </td>
                 </tr>

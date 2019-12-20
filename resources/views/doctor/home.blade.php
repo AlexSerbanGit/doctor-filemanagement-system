@@ -17,12 +17,12 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($documents as $document)                
+            @foreach ($documents as $key=>$document)                
             <tr>
-            <th scope="col">#</th>
+            <th scope="col">{{$key+1}}</th>
             <th scope="col">{{$document->title}}</th>
             <td>
-                <a download="{{$document->id.'.'.$document->extension}}" href="{{ url('/gg/'.$document->id.'.'.$document->extension) }}"><button class="btn btn-success"><i class="fas fa-download"></i></button></a>                {{-- <button class="btn btn-danger"><i class="fas fa-trash"></i></button> --}}
+                <a download="{{$document->id.'.'.$document->extension}}" href="{{ url('/gg/'.$document->id.'.'.$document->extension) }}"><button type="button" class="btn btn-success"><i class="fas fa-download"></i></button></a>                  {{-- <button class="btn btn-danger"><i class="fas fa-trash"></i></button> --}}
             </td>            
             </tr>
             @endforeach

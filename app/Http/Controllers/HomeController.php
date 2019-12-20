@@ -33,7 +33,11 @@ class HomeController extends Controller
     }
 
     public function zipFiles(Request $request){
-
+        if(!isset($request->check)){
+            return redirect()->back()->with([
+                'error' => 'no items selected',
+            ]);
+        }
         $headers = ["Content-Type"=>"application/zip"];
         $zip = new Zip;
         $zip->save();
