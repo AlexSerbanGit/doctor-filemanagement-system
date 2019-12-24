@@ -79,6 +79,7 @@
             left: 0;
             top: 0;
         }
+        /* #1073CB */
     </style>
 </head>
 
@@ -90,8 +91,8 @@
         <div class="pace-activity"></div>
     </div>
     <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
-        <div class="c-sidebar-brand"><img class="c-sidebar-brand-full" src="./core-ui_files/coreui-pro-base-white.svg" width="118" height="46" alt="CoreUI Logo"><img class="c-sidebar-brand-minimized" src="./core-ui_files/coreui-signet-white.svg" width="118" height="46" alt="CoreUI Logo"></div>
-        <ul class="c-sidebar-nav ps ps--active-y" data-drodpown-accordion="true">
+        <div class="c-sidebar-brand" style="background: #1073CB"><img class="c-sidebar-brand-full" src="./core-ui_files/coreui-pro-base-white.svg" width="118" height="46" alt="CoreUI Logo"><img class="c-sidebar-brand-minimized" src="./core-ui_files/coreui-signet-white.svg" width="118" height="46" alt="CoreUI Logo"></div>
+        <ul style="background: #1073CB" class="c-sidebar-nav ps ps--active-y" data-drodpown-accordion="true">
             <li class="c-sidebar-nav-item">
                 <a class="c-sidebar-nav-link c-active">
                     <i class="fas fa-tachometer-alt mr-3" style="font-size: 18px"></i>  Dashboard
@@ -147,7 +148,7 @@
                 </ul>
             </li> --}}
         </ul>
-        <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-unfoldable"></button>
+        <button style="background: #1073CB" class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-unfoldable"></button>
     </div>
     <div class="c-sidebar c-sidebar-lg c-sidebar-light c-sidebar-right c-sidebar-overlaid" id="aside">
         <button class="c-sidebar-close c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-show" responsive="true">

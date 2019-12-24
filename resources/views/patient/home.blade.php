@@ -22,7 +22,10 @@
             <th scope="col">#</th>
             <th scope="col">{{$document->title}}</th>
             <td>
-                <a download="{{$document->id.'.'.$document->extension}}" href="{{ url('/gg/'.$document->id.'.'.$document->extension) }}"><button class="btn btn-success"><i class="fas fa-download"></i></button></a>                {{-- <button class="btn btn-danger"><i class="fas fa-trash"></i></button> --}}
+                {{-- <a download="{{$document->id.'.'.$document->extension}}" href="{{ url('/gg/'.$document->id.'.'.$document->extension) }}"><button class="btn btn-success"><i class="fas fa-download"></i></button></a>                <button class="btn btn-danger"><i class="fas fa-trash"></i></button> --}}
+                <a href="{{ url('/download_document/'.$document->id) }}">
+                    <button class="btn btn-success"><i class="fas fa-download"></i></button>
+                </a>
             </td>            
             </tr>
             @endforeach
