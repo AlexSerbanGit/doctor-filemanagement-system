@@ -350,11 +350,11 @@
             <a class="c-header-brand d-sm-none" href="https://coreui.io/demo/3.0-beta.0/#"><img class="c-header-brand-full c-d-dark-none" src="./core-ui_files/coreui-pro-base.svg" width="118" height="46" alt="CoreUI Logo"><img class="c-header-brand-minimized c-d-dark-none" src="./core-ui_files/coreui-signet.svg" width="46" height="46" alt="CoreUI Logo"><img class="c-header-brand-full c-d-light-none" src="./core-ui_files/coreui-pro-base-white.svg" width="118" height="46" alt="CoreUI Logo"><img class="c-header-brand-minimized c-d-light-none" src="./core-ui_files/coreui-signet-white.svg" width="46" height="46" alt="CoreUI Logo"></a>
             <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar" data-class="c-sidebar-lg-show" responsive="true"><span class="c-header-toggler-icon"></span></button>
             <ul class="c-header-nav mfs-auto">
-                <li class="c-header-nav-item px-3">
+                {{-- <li class="c-header-nav-item px-3">
                     <button class="c-class-toggler c-header-nav-btn" type="button" id="header-tooltip" data-target="body" data-class="c-dark-theme" data-toggle="c-tooltip" data-placement="bottom" title="" data-original-title="Toggle Light/Dark Mode">
                         <i class="fas fa-yin-yang" style="font-size: 30px"></i>
                     </button>
-                </li>
+                </li> --}}
             </ul>
             <ul class="c-header-nav" style="height: 100%">
                 <li class="c-header-nav-item dropdown">

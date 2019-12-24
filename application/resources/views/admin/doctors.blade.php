@@ -9,6 +9,11 @@
     </h1>
 </div>
 <div class="table-responsive">  
+    <div class="container">
+        <div class="form-group">
+            <input placeholder="Search by name, email or phone number" type="text" id="mySearch" name="name" class="form-control">
+        </div>
+    </div>
 <table class="table">
   <thead>
     <tr>
@@ -20,14 +25,14 @@
       <th scope="col">Actions</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="docscontainer">
     @foreach ($users as $key=>$user)
     <tr>
       <th scope="row">{{$key+1}}</th>
       <td>{{$user->name}}</td>
       <td>{{$user->email}}</td>
       <td>{{$user->phone_number}}</td>
-      <td>0</td>
+      <td>{{$user->documents->count()}}</td>
       <td>
         <button class="btn btn-warning" data-toggle="modal" data-target="#editUser{{$user->id}}"><i class="fas fa-edit"></i></button>
         <button class="btn btn-danger" data-toggle="modal" data-target="#deleteUser{{$user->id}}"><i class="fas fa-trash"></i></button>
@@ -51,8 +56,16 @@
                 <input type="text" name="name" value="{{$user->name}}" placeholder="name" required class="form-control">
             </div>
             <div class="form-group">
+                <label>Email:</label>
+                <input type="email" name="email" value="{{$user->email}}" placeholder="email" required class="form-control">
+            </div>
+            <div class="form-group">
                 <label>Phone number:</label>
                 <input type="text" name="phone_number" value="{{$user->phone_number}}" placeholder="phone number" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Password: (optional)</label>
+                <input type="password" name="password" placeholder="password" class="form-control">
             </div>
             {{-- <div class="form-group">
                 <label>Email:</label>
@@ -124,7 +137,7 @@
         </div>
         <div class="form-group">
             <label>Password:</label>
-            <input type="text" name="password" placeholder="password" required class="form-control">
+            <input type="password" name="password" placeholder="password" required class="form-control">
         </div>
     </div>
     <div class="modal-footer">
@@ -136,5 +149,91 @@
 </div>
 </div>
 </div>
+
+<script src="{{ asset('js/core/jquery.min.js')}}"></script>
+
+<script>
+nottt = 0;
+let myData = 0;
+
+$(document).ready(function(){
+
+    // Get results function
+    $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+    });
+    $.ajax({
+    type:'GET',
+    url:"{{ url('/api/get_users/4') }}",
+    success:function(data){
+        // alert(data);
+        myData = data;
+    }
+    });
+});
+baseUrl = "{{ url('/') }}";
+$("#mySearch").on("paste keyup", function() {
+    document.getElementById('docscontainer').innerHTML = '';
+    console.log(myData);
+    numm = 0;
+
+    for(let i=0;i < myData.documents.length;i++){
+            console.log(myData.documents[i]);
+            name = myData.documents[i].name.toUpperCase();
+            email = myData.documents[i].email.toUpperCase();
+            if(name.includes($(this).val().toUpperCase()) || email.includes($(this).val().toUpperCase())){
+                numm++;
+
+                tr = document.createElement('tr');
+                document.getElementById('docscontainer').appendChild(tr);
+
+                td = document.createElement('td');
+                td.innerHTML = numm;
+                td.className = 'text-center';
+                tr.appendChild(td);
+
+                td = document.createElement('td');
+                td.innerHTML = myData.documents[i].name;
+                tr.appendChild(td);
+
+                td = document.createElement('td');
+                td.innerHTML = myData.documents[i].email;
+                tr.appendChild(td);
+
+                td = document.createElement('td');
+                td.innerHTML = myData.documents[i].phone_number;
+                tr.appendChild(td);
+
+                td = document.createElement('td');
+                td.innerHTML = myData.documents[i].docs;
+                tr.appendChild(td);
+
+                td = document.createElement('td');
+                tr.appendChild(td);
+                button = document.createElement('button');
+                button.setAttribute('type', 'button');
+                button.setAttribute('class', 'btn btn-warning');
+                button.setAttribute('data-toggle', 'modal');
+                button.setAttribute('data-target', '#editUser'+myData.documents[i].id);
+                td.appendChild(button);
+                itag = document.createElement('i');
+                itag.setAttribute('class', 'fas fa-edit');
+                button.appendChild(itag);
+
+                button = document.createElement('button');
+                button.setAttribute('type', 'button');
+                button.setAttribute('class', 'btn btn-danger');
+                button.setAttribute('data-toggle', 'modal');
+                button.setAttribute('data-target', '#deleteUser'+myData.documents[i].id);
+                td.appendChild(button);
+                itag = document.createElement('i');
+                itag.setAttribute('class', 'fas fa-trash');
+                button.appendChild(itag);
+            }
+        }
+    });
+</script>
 
 @endsection

@@ -20,7 +20,7 @@ class PatientsController extends Controller
 
     public function add(Request $request){
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:191', 
+            'name' => 'required|string|max:191|unique:users', 
             'email' => 'required|string|max:191|unique:users',
             'password' => 'required|string|max:191',
             'phone_number' => ['required', 'string', 'max:20'],
@@ -44,7 +44,7 @@ class PatientsController extends Controller
     public function edit(Request $request, $id){
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191', 
-            // 'email' => 'required|string|max:191|unique:users',
+            'email' => 'required|string|max:191|email',
             'phone_number' => ['required', 'string', 'max:20'],
         ]);
     
@@ -54,8 +54,31 @@ class PatientsController extends Controller
 
         $user = User::find($id);
         if($user && $user->role_id == 2){
-            $user->name = $request->name;
-            // $user->email = $request->email;
+
+            if($request->email != $user->email){
+                $users = User::where('email', '=', $request->email)->get();
+
+                if($users->count() > 0){
+                    return redirect()->back()->with('error', 'There is a user with that email already registered!');
+                }
+                $user->email = $request->email;
+
+            }
+
+            if($request->name != $user->name){
+                $users = User::where('name', '=', $request->name)->get();
+
+                if($users->count() > 0){
+                    return redirect()->back()->with('error', 'There is a user with that username already registered!');
+                }
+                $user->name = $request->name;
+
+            }
+
+            if($request->password){
+                $user->password = bcrypt($request->password);
+            }
+
             $user->phone_number = $request->phone_number;
             $user->save();
             
