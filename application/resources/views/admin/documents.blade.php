@@ -22,10 +22,10 @@
                 <thead>
                 <tr>
                     <th scope="col"></th>
-                    <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Receipt date</th>
-                    <th scope="col">Type</th>
+                    <th scope="col">@sortablelink('id', 'Id')</th>
+                    <th scope="col">@sortablelink('title', 'Title')</th>
+                    <th scope="col">@sortablelink('created_at', 'Receipt date')</th>
+                    <th scope="col">@sortablelink('role_id', 'Type')</th>
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>
@@ -33,7 +33,7 @@
                 @foreach($documents as $key=>$document)
                 <tr>
                     <th><input type="checkbox" name="check[{{$document->id}}]"></th>
-                    <th scope="row">{{$key+1}}</th>
+                    <th scope="row">{{$document->id}}</th>
                     <td>{{$document->title}}</td>
                     <td>{{$document->created_at}}</td>
                     <td>@if($document->role_id == 2) Patient @elseif($document->role_id == 3) Convenant @elseif($document->role_id == 4) Doctor @endif</td>

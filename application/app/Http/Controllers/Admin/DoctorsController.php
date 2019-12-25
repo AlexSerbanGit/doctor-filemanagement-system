@@ -12,7 +12,7 @@ class DoctorsController extends Controller
 {
     
     public function index(){
-        $users = User::where('role_id', '=', 4)->paginate(15);
+        $users = User::where('role_id', '=', 4)->sortable()->paginate(15);
 
         foreach($users as $user){
             $documents = Document::where('agreement_code', '=', $user->name)->get();

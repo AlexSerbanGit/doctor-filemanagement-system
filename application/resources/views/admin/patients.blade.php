@@ -15,9 +15,9 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Email</th>
+      <th scope="col">@sortablelink('id', 'Id')</th>
+      <th scope="col">@sortablelink('name')</th>
+      <th scope="col">@sortablelink('email')</th>
       <th>Phone number</th>
       <th scope="col">Reports</th>
       <th scope="col">Actions</th>
@@ -26,7 +26,7 @@
   <tbody id="docscontainer">
     @foreach ($users as $key=>$user)
     <tr>
-      <th scope="row">{{$key+1}}</th>
+      <th scope="row">{{$user->id}}</th>
       <td>{{$user->name}}</td>
       <td>{{$user->email}}</td>
       <td>{{$user->phone_number}}</td>
@@ -185,7 +185,7 @@ $("#mySearch").on("paste keyup", function() {
             console.log(myData.documents[i]);
             name = myData.documents[i].name.toUpperCase();
             email = myData.documents[i].email.toUpperCase();
-            if(name.includes($(this).val().toUpperCase()) || email.includes($(this).val().toUpperCase())){
+            if($(this).val() && (name.includes($(this).val().toUpperCase()) || email.includes($(this).val().toUpperCase()))){
                 numm++;
 
                 tr = document.createElement('tr');
@@ -212,18 +212,6 @@ $("#mySearch").on("paste keyup", function() {
                 td.innerHTML = myData.documents[i].docs;
                 tr.appendChild(td);
 
-                // td = document.createElement('td');
-                // if(myData.documents[i].role_id == 2){
-                //     td.innerHTML = 'Patient';
-                // }
-                // if(myData.documents[i].role_id == 3){
-                //     td.innerHTML = 'Convenant';
-                // }
-                // if(myData.documents[i].role_id == 4){
-                //     td.innerHTML = 'Doctor';
-                // }
-                // tr.appendChild(td);
-
                 td = document.createElement('td');
                 tr.appendChild(td);
                 button = document.createElement('button');
@@ -245,42 +233,6 @@ $("#mySearch").on("paste keyup", function() {
                 itag = document.createElement('i');
                 itag.setAttribute('class', 'fas fa-trash');
                 button.appendChild(itag);
-                
-                // aa = document.createElement('a');
-                // aa.setAttribute('href', baseUrl+'/admin/delete_document/'+myData.documents[i].id);
-                // td.appendChild(aa);
-                // button = document.createElement('button');
-                // button.setAttribute('type', 'button');
-                // button.setAttribute('class', 'btn btn-danger');
-                // aa.appendChild(button);
-                // itag = document.createElement('i');
-                // itag.setAttribute('class', 'fas fa-trash');
-                // button.appendChild(itag);
-
-                // td = document.createElement('td');
-                // // td.innerHTML = 'Diamante';
-                // td.className = 'text-right';
-                // tr.appendChild(td);
-
-                // button = document.createElement('button');
-                // button.className = 'btn btn-info';
-                // button.setAttribute('data-toggle', 'modal');
-                // button.setAttribute('data-target', '#addDiamonds'+myData.users[i].id);
-                // button.style.padding = '10px';
-
-                // itag = document.createElement('i');
-                // itag.className = 'far fa-gem';
-                // itag.style.fontSize = '18px';
-
-                // button.appendChild(itag);
-                // td.appendChild(button);
-
-                // td = document.createElement('td');
-                // td.innerHTML = myData.users[i].email;
-                // td.className = 'text-right';
-                // tr.appendChild(td);
-
-                // console.log(myData.documents[i]);
             }
         }
     });

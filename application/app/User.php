@@ -5,10 +5,12 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Kyslik\ColumnSortable\Sortable;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use Sortable;
 
     /**
      * The attributes that are mass assignable.
@@ -40,5 +42,7 @@ class User extends Authenticatable
     public function documents(){
         return $this->belongsToMany('App\Document', 'user_has_documents', 'user_id', 'document_id');
     }
+
+    public $sortable = ['id', 'name', 'email'];
 
 }

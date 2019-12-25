@@ -11,7 +11,7 @@ class PatientsController extends Controller
 {
     
     public function index(){
-        $users = User::where('role_id', '=', 2)->paginate(15);
+        $users = User::where('role_id', '=', 2)->sortable()->paginate(15);
 
         return view('admin.patients')->with([
             'users' => $users,

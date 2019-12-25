@@ -11,7 +11,7 @@ class DocumentsController extends Controller
     
     public function index(){
 
-        $documents = Document::paginate(15);
+        $documents = Document::sortable()->paginate(15);
 
         return view('admin.documents')->with([
             'documents' => $documents,

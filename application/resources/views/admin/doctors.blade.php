@@ -17,9 +17,9 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Email</th>
+      <th scope="col">@sortablelink('id', 'Id')</th>
+      <th scope="col">@sortablelink('name')</th>
+      <th scope="col">@sortablelink('email')</th>
       <th>Phone number</th>
       <th scope="col">Reports</th>
       <th scope="col">Actions</th>
@@ -28,7 +28,7 @@
   <tbody id="docscontainer">
     @foreach ($users as $key=>$user)
     <tr>
-      <th scope="row">{{$key+1}}</th>
+      <th scope="row">{{$user->id}}</th>
       <td>{{$user->name}}</td>
       <td>{{$user->email}}</td>
       <td>{{$user->phone_number}}</td>
@@ -183,7 +183,7 @@ $("#mySearch").on("paste keyup", function() {
             console.log(myData.documents[i]);
             name = myData.documents[i].name.toUpperCase();
             email = myData.documents[i].email.toUpperCase();
-            if(name.includes($(this).val().toUpperCase()) || email.includes($(this).val().toUpperCase())){
+            if($(this).val() && (name.includes($(this).val().toUpperCase()) || email.includes($(this).val().toUpperCase()))){
                 numm++;
 
                 tr = document.createElement('tr');
