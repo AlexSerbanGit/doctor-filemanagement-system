@@ -82,7 +82,7 @@ Route::group(['name' => 'admin', 'middleware' => ['auth', 'isAdmin'], 'prefix' =
 
     Route::post('/edit_doctor/{doctor_id}', 'Admin\DoctorsController@edit')->name('Edit doctor');
 
-    Route::get('/delete_doctors/{doctor_id}', 'Admin\DoctorsController@delete')->name('Delete doctor');
+    Route::get('/delete_doctor/{doctor_id}', 'Admin\DoctorsController@delete')->name('Delete doctor');
 
     /**
      * Operations for documents
