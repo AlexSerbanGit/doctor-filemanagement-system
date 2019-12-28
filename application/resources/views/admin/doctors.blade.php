@@ -52,7 +52,7 @@
         @csrf
         <div class="modal-body">
             <div class="form-group">
-                <label>Name:</label>
+                <label>Doctor code:</label>
                 <input type="text" name="name" value="{{$user->name}}" placeholder="name" required class="form-control">
             </div>
             <div class="form-group">
@@ -124,7 +124,7 @@
     @csrf
     <div class="modal-body">
         <div class="form-group">
-            <label>Name:</label>
+            <label>Doctor code:</label>
             <input type="text" name="name" placeholder="name" required class="form-control">
         </div>
         <div class="form-group">

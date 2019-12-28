@@ -33,7 +33,7 @@ class DoctorsController extends Controller
         ]);
 
         if($validator->fails()){
-            return redirect()->back()->with('error', 'Invalid data sent');
+            return redirect()->back()->with('error', 'Invalid data sent or this user already exists');
         }
 
         $user = new User;
