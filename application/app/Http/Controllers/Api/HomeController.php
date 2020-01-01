@@ -20,7 +20,7 @@ class HomeController extends Controller
 
     public function getUsers($id){
 
-        if($id >= 2 && $id <= 4){
+        if($id >= 1 && $id <= 4){
 
             $users = User::where('role_id', '=', $id)->get();
 

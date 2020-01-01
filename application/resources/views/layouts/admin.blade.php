@@ -105,6 +105,11 @@
                 </a>
             </li>
             <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="{{ url('admin/admins') }}">
+                    <i class="fas fa-user mr-3" style="font-size: 18px"></i> Admins
+                </a>
+            </li>
+            <li class="c-sidebar-nav-item">
                 <a class="c-sidebar-nav-link" href="{{ url('admin/patients') }}">
                     <i class="fas fa-user mr-3" style="font-size: 18px"></i> Patients
                 </a>

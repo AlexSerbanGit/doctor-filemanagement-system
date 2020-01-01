@@ -40,6 +40,19 @@ Route::group(['name' => 'admin', 'middleware' => ['auth', 'isAdmin'], 'prefix' =
     Route::get('/home', 'Admin\HomeController@index')->name('Home');
 
     /**
+     * CRUD operations for admins
+     * -create 
+     * -read
+     * -update
+     * -delete
+     */
+    Route::post('/add_admin', 'Admin\AdminsController@add')->name('Add admin');
+
+    Route::get('/admins', 'Admin\AdminsController@index')->name('Admins');
+
+    Route::post('/edit_admin/{admin_id}', 'Admin\AdminsController@edit')->name('Edit admin');
+
+    /**
      * CRUD operations for patients
      * -create 
      * -read
