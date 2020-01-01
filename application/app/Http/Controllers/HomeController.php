@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Document;
+use App\User;
 use App\Zip;
 use Illuminate\Http\Request;
 use Auth;
 use File;
 use ZipArchive;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -99,4 +101,56 @@ class HomeController extends Controller
         }
 
     }
+
+    public function changeCredentials(Request $request){
+
+        $user = User::find(Auth::user()->id);
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:191', 
+            'email' => 'required|string|max:191|email',
+            'phone_number' => ['required', 'string', 'max:20'],
+        ]);
+    
+        if($validator->fails()){
+            return redirect()->back()->with('error', 'Invalid data sent');
+        }
+
+        if($user){
+
+            if($request->email != $user->email){
+                $users = User::where('email', '=', $request->email)->get();
+
+                if($users->count() > 0){
+                    return redirect()->back()->with('error', 'There is a user with that email already registered!');
+                }
+                $user->email = $request->email;
+
+            }
+
+            if($request->name != $user->name){
+                $users = User::where('name', '=', $request->name)->get();
+
+                if($users->count() > 0){
+                    return redirect()->back()->with('error', 'There is a user with that username already registered!');
+                }
+                $user->name = $request->name;
+
+            }
+
+            if($request->password){
+                $user->password = bcrypt($request->password);
+            }
+
+            $user->phone_number = $request->phone_number;
+            $user->save();
+            
+    
+            return redirect()->back()->with('success', 'Patient updated!');
+        }
+
+        return redirect()->back()->with('error', 'This user does not exist or its not a patient');
+
+    }
+
 }

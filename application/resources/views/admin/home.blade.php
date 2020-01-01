@@ -4,6 +4,20 @@
 
 <div class="container-fluid">
     <div class="row">
+        <div class="col-md-4 col-sm-0 col-xs-0">
+          
+        </div>
+        <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="card ">
+                <div class="bg-gradient-primary card-header" style="text-align: center">
+                    <i class="fas fa-lock" style="font-size: 60px"></i>
+                    <h1>Admins: {{$admins}}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-0 col-xs-0">
+          
+        </div>
         <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="card ">
                 <div class="bg-gradient-primary card-header" style="text-align: center">

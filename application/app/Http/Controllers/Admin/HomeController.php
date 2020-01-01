@@ -12,6 +12,7 @@ class HomeController extends Controller
 {
     
     public function index(){
+        $admins = User::where('role_id', '=', 1)->get()->count();
         $patients = User::where('role_id', '=', 2)->get()->count();
         $convenants = User::where('role_id', '=', 3)->get()->count();
         $doctors = User::where('role_id', '=', 4)->get()->count();
@@ -22,6 +23,7 @@ class HomeController extends Controller
 
 
         return view('admin.home')->with([
+            'admins' => $admins,
             'patients' => $patients, 
             'convenants' => $convenants,
             'doctors' => $doctors,

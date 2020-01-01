@@ -33,6 +33,8 @@ Route::group(['name' => 'authenticated', 'middleware' => ['auth']], function(){
 
     Route::get('/download_document/{document_id}', 'HomeController@download');
 
+    Route::post('/change_credentials', 'HomeController@changeCredentials');
+
 });
 
 Route::group(['name' => 'admin', 'middleware' => ['auth', 'isAdmin'], 'prefix' => 'admin'], function(){

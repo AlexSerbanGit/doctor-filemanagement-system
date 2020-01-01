@@ -345,6 +345,11 @@
                         <a class="dropdown-item" >
                             <i class="fas fa-user mr-3"></i>
                             {{Auth::user()->name}}</a>
+
+                        <a class="dropdown-item" data-toggle="modal" data-target="#editCredentials">
+                            <i class="fas fa-edit mr-3"></i>
+                            Edit credentials</a>
+
                         <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
@@ -367,6 +372,45 @@
                 @yield('content')
             </div>
            
+        </div>
+    </div>
+
+    <!-- Modal edit credentials -->
+    <div class="modal fade" id="editCredentials" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit credentials</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <form action="{{ url('/change_credentials') }}" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Name:</label>
+                        <input type="text" required value="{{ Auth::user()->name }}" name="name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" required value="{{ Auth::user()->email }}" name="email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone number:</label>
+                        <input type="string" required value="{{ Auth::user()->phone_number }}" name="phone_number" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Password: (optional)</label>
+                        <input type="password" name="password" class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
         </div>
     </div>
 
