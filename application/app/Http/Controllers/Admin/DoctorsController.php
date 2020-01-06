@@ -29,6 +29,7 @@ class DoctorsController extends Controller
     public function add(Request $request){
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191|unique:users', 
+            'full_name' => 'required|string|max:191', 
             'email' => 'required|string|max:191|unique:users',
             'password' => 'required|string|max:191',
             'phone_number' => ['required', 'string', 'max:20'],
@@ -40,6 +41,7 @@ class DoctorsController extends Controller
 
         $user = new User;
         $user->name = $request->name;
+        $user->full_name = $request->full_name;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->role_id = 4;
@@ -52,6 +54,7 @@ class DoctorsController extends Controller
     public function edit(Request $request, $id){
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191', 
+            'full_name' => 'required|string|max:191', 
             'email' => 'required|string|max:191|email',
             'phone_number' => ['required', 'string', 'max:20'],
         ]);
@@ -87,6 +90,7 @@ class DoctorsController extends Controller
                 $user->password = bcrypt($request->password);
             }
 
+            $user->full_name = $request->full_name;
             $user->phone_number = $request->phone_number;
             $user->save();
             

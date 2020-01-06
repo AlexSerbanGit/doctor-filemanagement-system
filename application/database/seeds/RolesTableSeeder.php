@@ -31,6 +31,7 @@ class RolesTableSeeder extends Seeder
 
         $user = new User;
         $user->name = 'Admin';
+        $user->full_name = 'Admin';
         $user->email = 'serbann.alexandruu@yahoo.com';
         $user->password = bcrypt('password');
         $user->role_id = 1;

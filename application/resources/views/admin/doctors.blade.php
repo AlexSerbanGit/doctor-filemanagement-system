@@ -57,6 +57,10 @@
                 <input type="text" name="name" value="{{$user->name}}" placeholder="name" required class="form-control">
             </div>
             <div class="form-group">
+                <label>Full name:</label>
+                <input type="text" name="full_name" value="{{$user->full_name}}" placeholder="Full name" required class="form-control">
+            </div>
+            <div class="form-group">
                 <label>Email:</label>
                 <input type="email" name="email" value="{{$user->email}}" placeholder="email" required class="form-control">
             </div>
@@ -127,6 +131,10 @@
         <div class="form-group">
             <label>Doctor code:</label>
             <input type="text" name="name" placeholder="name" required class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Full name:</label>
+            <input type="text" name="full_name" placeholder="Full name" required class="form-control">
         </div>
         <div class="form-group">
             <label>Phone number:</label>
