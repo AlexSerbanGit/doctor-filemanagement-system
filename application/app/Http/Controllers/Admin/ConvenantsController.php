@@ -18,8 +18,10 @@ class ConvenantsController extends Controller
             $user->documents = $documents;
         }
 
+        $total = User::where('role_id', '=', 3)->count();
         return view('admin.convenants')->with([
             'users' => $users,
+            'total' => $total,
         ]);
     }
 

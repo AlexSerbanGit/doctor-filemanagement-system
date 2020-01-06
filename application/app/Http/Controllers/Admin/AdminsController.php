@@ -13,8 +13,10 @@ class AdminsController extends Controller
     public function index(){
         $users = User::where('role_id', '=', 1)->sortable()->paginate(15);
 
+        $total = User::where('role_id', '=', 1)->count();
         return view('admin.admins')->with([
             'users' => $users,
+            'total' => $total,
         ]);
     }
 

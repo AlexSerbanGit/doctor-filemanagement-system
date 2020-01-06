@@ -7,6 +7,7 @@
     <h1>
         Doctors
     </h1>
+    <h5>(Showing {{$users->count()}} of {{$total}} doctors)</h5> 
 </div>
 <div class="table-responsive">  
     <div class="container">
@@ -179,6 +180,63 @@ $("#mySearch").on("paste keyup", function() {
     console.log(myData);
     numm = 0;
 
+    if(!$(this).val()){
+        for(let i=0;i < myData.documents.length && i <= 15;i++){
+            console.log(myData.documents[i]);
+            name = myData.documents[i].name.toUpperCase();
+            email = myData.documents[i].email.toUpperCase();
+
+            numm++;
+
+            tr = document.createElement('tr');
+            document.getElementById('docscontainer').appendChild(tr);
+
+            td = document.createElement('td');
+            td.innerHTML = numm;
+            td.className = 'text-center';
+            tr.appendChild(td);
+
+            td = document.createElement('td');
+            td.innerHTML = myData.documents[i].name;
+            tr.appendChild(td);
+
+            td = document.createElement('td');
+            td.innerHTML = myData.documents[i].email;
+            tr.appendChild(td);
+
+            td = document.createElement('td');
+            td.innerHTML = myData.documents[i].phone_number;
+            tr.appendChild(td);
+
+            td = document.createElement('td');
+            td.innerHTML = myData.documents[i].docs;
+            tr.appendChild(td);
+
+            td = document.createElement('td');
+            tr.appendChild(td);
+            button = document.createElement('button');
+            button.setAttribute('type', 'button');
+            button.setAttribute('class', 'btn btn-warning');
+            button.setAttribute('data-toggle', 'modal');
+            button.setAttribute('data-target', '#editUser'+myData.documents[i].id);
+            button.style.marginRight = '5px';
+            td.appendChild(button);
+            itag = document.createElement('i');
+            itag.setAttribute('class', 'fas fa-edit');
+            button.appendChild(itag);
+
+            button = document.createElement('button');
+            button.setAttribute('type', 'button');
+            button.setAttribute('class', 'btn btn-danger');
+            button.setAttribute('data-toggle', 'modal');
+            button.setAttribute('data-target', '#deleteUser'+myData.documents[i].id);
+            td.appendChild(button);
+            itag = document.createElement('i');
+            itag.setAttribute('class', 'fas fa-trash');
+            button.appendChild(itag);
+        }
+    }
+
     for(let i=0;i < myData.documents.length;i++){
             console.log(myData.documents[i]);
             name = myData.documents[i].name.toUpperCase();
@@ -217,6 +275,7 @@ $("#mySearch").on("paste keyup", function() {
                 button.setAttribute('class', 'btn btn-warning');
                 button.setAttribute('data-toggle', 'modal');
                 button.setAttribute('data-target', '#editUser'+myData.documents[i].id);
+                button.style.marginRight = '5px';
                 td.appendChild(button);
                 itag = document.createElement('i');
                 itag.setAttribute('class', 'fas fa-edit');

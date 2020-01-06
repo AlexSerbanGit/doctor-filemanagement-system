@@ -13,8 +13,10 @@ class PatientsController extends Controller
     public function index(){
         $users = User::where('role_id', '=', 2)->sortable()->paginate(15);
 
+        $total = User::where('role_id', '=', 2)->count();
         return view('admin.patients')->with([
             'users' => $users,
+            'total' => $total,
         ]);
     }
 
