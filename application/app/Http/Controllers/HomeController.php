@@ -108,6 +108,7 @@ class HomeController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191', 
+            'full_name' => 'required|string|max:191', 
             'email' => 'required|string|max:191|email',
             'phone_number' => ['required', 'string', 'max:20'],
         ]);
@@ -142,6 +143,7 @@ class HomeController extends Controller
                 $user->password = bcrypt($request->password);
             }
 
+            $user->full_name = $request->full_name;
             $user->phone_number = $request->phone_number;
             $user->save();
             

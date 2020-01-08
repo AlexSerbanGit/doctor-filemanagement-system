@@ -419,6 +419,10 @@
                         <input type="text" required value="{{ Auth::user()->name }}" name="name" class="form-control">
                     </div>
                     <div class="form-group">
+                        <label>Full name:</label>
+                        <input type="text" required value="{{ Auth::user()->full_name }}" name="full_name" class="form-control">
+                    </div>
+                    <div class="form-group">
                         <label>Email:</label>
                         <input type="email" required value="{{ Auth::user()->email }}" name="email" class="form-control">
                     </div>
