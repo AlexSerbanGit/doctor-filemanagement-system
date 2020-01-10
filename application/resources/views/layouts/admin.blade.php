@@ -457,6 +457,7 @@
 
     <script type="text/javascript" src="./core-ui_files/coreui-chartjs.bundle.js.download" class="view-script"></script>
     <script type="text/javascript" src="./core-ui_files/main.js.download" class="view-script"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
 </body>
 
 </html>

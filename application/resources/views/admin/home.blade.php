@@ -69,7 +69,29 @@
                     </div>
             </div>
         </div>
+
     </div>
+
+    <div id="app">
+        {!! $chart->container() !!}
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/echarts/4.0.2/echarts-en.min.js charset=utf-8></script>
+    {!! $chart->script() !!}
+    <script>
+        var app = new Vue({
+            el: '#app',
+        });
+
+        var config = {
+            data: {
+                datasets: [{
+                    backgroundColor: window.chartColors.red,
+                    borderColor: window.chartColors.red,
+                }]
+            },
+        }
+    </script>
 </div>
 
 @endsection

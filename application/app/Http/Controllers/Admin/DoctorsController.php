@@ -67,7 +67,7 @@ class DoctorsController extends Controller
         if($user && $user->role_id == 4){
 
             if($request->email != $user->email){
-                $users = User::where('email', '=', $request->email)->get();
+                $users = User::where('role_id', '=', 4)->where('email', '=', $request->email)->get();
 
                 if($users->count() > 0){
                     return redirect()->back()->with('error', 'There is a user with that email already registered!');
@@ -77,7 +77,7 @@ class DoctorsController extends Controller
             }
 
             if($request->name != $user->name){
-                $users = User::where('name', '=', $request->name)->get();
+                $users = User::where('role_id','=', 4)->where('name', '=', $request->name)->get();
 
                 if($users->count() > 0){
                     return redirect()->back()->with('error', 'There is a user with that username already registered!');

@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use App\User;
+use App\Charts\DocumentsChart;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -20,7 +22,22 @@ class HomeController extends Controller
         $pat_docs = Document::where('role_id', '=', 2)->get()->count();
         $conv_docs = Document::where('role_id', '=', 3)->get()->count();
         $doc_docs = Document::where('role_id', '=', 4)->get()->count();
+        $today = Carbon::now();
+        
+        $this_doc = Document::where('created_at', '>', Carbon::now()->subMonths(1))->get()->count();
+        $last_doc = Document::where('created_at', '>', Carbon::now()->subMonths(2))->get()->count();
+        $last2_doc = Document::where('created_at', '>', Carbon::now()->subMonths(3))->get()->count();
 
+        $last_doc -= $this_doc;
+        $last2_doc -= $last_doc + $this_doc;
+
+        $val_this = $this_doc/$doctors;
+        $val_last = $last_doc/$doctors;
+        $val_last2 = $last2_doc/$doctors;
+
+        $chart = new DocumentsChart;
+        $chart->labels(['Two months ago', 'One month ago', 'This month']);
+        $chart->dataset('Documents per doctor', 'line', [$val_last2, $val_last , $val_this]);
 
         return view('admin.home')->with([
             'admins' => $admins,
@@ -30,6 +47,7 @@ class HomeController extends Controller
             'pat_docs' => $pat_docs,
             'conv_docs' => $conv_docs,
             'doc_docs' => $doc_docs,
+            'chart' => $chart,
         ]);
     }
 

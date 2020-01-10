@@ -210,16 +210,6 @@ $("#mySearch").on("paste keyup", function() {
             itag = document.createElement('i');
             itag.setAttribute('class', 'fas fa-edit');
             button.appendChild(itag);
-
-            button = document.createElement('button');
-            button.setAttribute('type', 'button');
-            button.setAttribute('class', 'btn btn-danger');
-            button.setAttribute('data-toggle', 'modal');
-            button.setAttribute('data-target', '#deleteUser'+myData.documents[i].id);
-            td.appendChild(button);
-            itag = document.createElement('i');
-            itag.setAttribute('class', 'fas fa-trash');
-            button.appendChild(itag);
         }
     }
 
