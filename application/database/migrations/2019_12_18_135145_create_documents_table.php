@@ -23,6 +23,7 @@ class CreateDocumentsTable extends Migration
             $table->string('doctor_code')->nullable();
             $table->string('patient_protocol')->nullable();
             $table->string('patient_password')->nullable();
+            $table->boolean('downloaded')->default(0);
             $table->timestamps();
         });
     }

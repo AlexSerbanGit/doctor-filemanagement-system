@@ -27,6 +27,7 @@
                     <th scope="col">@sortablelink('title', 'Title')</th>
                     <th scope="col">@sortablelink('created_at', 'Receipt date')</th>
                     <th scope="col">@sortablelink('role_id', 'Type')</th>
+                    <th>Downloaded</th>
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>
@@ -38,6 +39,7 @@
                     <td>{{$document->title}}</td>
                     <td>{{$document->created_at}}</td>
                     <td>@if($document->role_id == 2) Patient @elseif($document->role_id == 3) Convenant @elseif($document->role_id == 4) Doctor @endif</td>
+                    <td>@if($document->downloaded == 1) Yes @else No @endif</td>
                     <td>    
                         {{-- <a download="{{$document->id.'.'.$document->extension}}" href="{{ url('/gg/'.$document->id.'.'.$document->extension) }}"><button type="button" class="btn btn-success"><i class="fas fa-download"></i></button></a>   --}}
                         {{-- <a download="{{$document->id.'.'.$document->extension}}" href="{{ url('/gg/'.$document->id.'.'.$document->extension) }}"><button class="btn btn-success"><i class="fas fa-download"></i></button></a>                <button class="btn btn-danger"><i class="fas fa-trash"></i></button> --}}

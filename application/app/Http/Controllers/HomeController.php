@@ -82,6 +82,8 @@ class HomeController extends Controller
 
             foreach(Auth::user()->documents as $doc){
                 if($doc->id == $id){
+                    $document->downloaded = 1;
+                    $document->save();
                     return response()->download(dirname(dirname(public_path())).'/gg/'.$document->id.'.'.$document->extension);
                 }
             }
@@ -89,12 +91,16 @@ class HomeController extends Controller
         }elseif(Auth::user()->role_id == 3){
 
             if($document->agreement_code == Auth::user()->name){
+                $document->downloaded = 1;
+                $document->save();
                 return response()->download(dirname(dirname(public_path())).'/gg/'.$document->id.'.'.$document->extension);
             }
 
         }elseif(Auth::user()->role_id == 3){
 
             if($document->doctor_code == Auth::user()->name){
+                $document->downloaded = 1;
+                $document->save();
                 return response()->download(dirname(dirname(public_path())).'/gg/'.$document->id.'.'.$document->extension);
             }
 

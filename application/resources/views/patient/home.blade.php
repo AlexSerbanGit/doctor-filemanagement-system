@@ -14,6 +14,7 @@
             <th scope="col">#</th>
             <th scope="col">Title</th>
             <th scope="col">Receipt date</th>
+            <th>Downloaded</th>
             <th scope="col">Actions</th>
             </tr>
         </thead>
@@ -23,6 +24,7 @@
             <th scope="col">#</th>
             <th scope="col">{{$document->title}}</th>
             <td>{{$document->created_at}}</td>
+            <td>@if($document->downloaded == 1) Yes @else No @endif</td>
             <td>
             {{-- <a download="{{$document->id.'.'.$document->extension}}" href="{{ url('/gg/'.$document->id.'.'.$document->extension) }}"><button class="btn btn-success"><i class="fas fa-download"></i></button></a>                <button class="btn btn-danger"><i class="fas fa-trash"></i></button> --}}
             <a href="{{ url('/download_document/'.$document->id) }}">
