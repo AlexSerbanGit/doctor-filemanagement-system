@@ -5,7 +5,7 @@
 <div class="container-fluid">
 <div class="alert alert-primary">
     <h1>Admins</h1>
-    <h5>(Showing {{$users->count()}} of {{$total}} admins)</h5> 
+    <h5>(Showing <tag-random id="count">{{$users->count()}}</tag-random> of {{$total}} admins)</h5> 
 </div>
 <div class="table-responsive">  
     <div class="container">
@@ -155,9 +155,9 @@ $(document).ready(function(){
     success:function(data){
         // alert(data);
         myData = data;
+        document.getElementById('mySearch').style.display = 'inline-block';
     }
     });
-    document.getElementById('mySearch').style.display = 'inline-block';
 
 });
 baseUrl = "{{ url('/') }}";
@@ -173,6 +173,7 @@ $("#mySearch").on("paste keyup", function() {
             email = myData.documents[i].email.toUpperCase();
 
             numm++;
+            document.getElementById('count').innerHTML = numm;
 
             tr = document.createElement('tr');
             document.getElementById('docscontainer').appendChild(tr);
@@ -219,6 +220,7 @@ $("#mySearch").on("paste keyup", function() {
             email = myData.documents[i].email.toUpperCase();
             if($(this).val() && (name.includes($(this).val().toUpperCase()) || email.includes($(this).val().toUpperCase()))){
                 numm++;
+                document.getElementById('count').innerHTML = numm;
 
                 tr = document.createElement('tr');
                 document.getElementById('docscontainer').appendChild(tr);

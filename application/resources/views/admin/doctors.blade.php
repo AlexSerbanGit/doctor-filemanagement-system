@@ -7,7 +7,7 @@
     <h1>
         Doctors
     </h1>
-    <h5>(Showing {{$users->count()}} of {{$total}} doctors)</h5> 
+    <h5>(Showing <tag-random id="count">{{$users->count()}}</tag-random> of {{$total}} doctors)</h5> 
 </div>
 <div class="table-responsive">  
     <div class="container">
@@ -162,6 +162,8 @@
 <script src="{{ asset('js/core/jquery.min.js')}}"></script>
 
 <script>
+    document.getElementById('mySearch').style.display = 'none';
+
 nottt = 0;
 let myData = 0;
 
@@ -179,6 +181,7 @@ $(document).ready(function(){
     success:function(data){
         // alert(data);
         myData = data;
+        document.getElementById('mySearch').style.display = 'inline-block';
     }
     });
 });
@@ -195,6 +198,7 @@ $("#mySearch").on("paste keyup", function() {
             email = myData.documents[i].email.toUpperCase();
 
             numm++;
+            document.getElementById('count').innerHTML = numm;
 
             tr = document.createElement('tr');
             document.getElementById('docscontainer').appendChild(tr);
@@ -251,6 +255,7 @@ $("#mySearch").on("paste keyup", function() {
             email = myData.documents[i].email.toUpperCase();
             if($(this).val() && (name.includes($(this).val().toUpperCase()) || email.includes($(this).val().toUpperCase()))){
                 numm++;
+                document.getElementById('count').innerHTML = numm;
 
                 tr = document.createElement('tr');
                 document.getElementById('docscontainer').appendChild(tr);

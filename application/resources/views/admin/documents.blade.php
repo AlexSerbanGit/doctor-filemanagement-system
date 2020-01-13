@@ -66,6 +66,8 @@
 <script src="{{ asset('js/core/jquery.min.js')}}"></script>
 
 <script>
+    document.getElementById('mySearch').style.display = 'none';
+
 nottt = 0;
 let myData = 0;
 
@@ -83,6 +85,7 @@ $(document).ready(function(){
     success:function(data){
         // alert(data);
         myData = data;
+        document.getElementById('mySearch').style.display = 'inline-block';
     }
     });
 });
@@ -92,7 +95,7 @@ $("#mySearch").on("paste keyup", function() {
     numm = 0;
     
     if(!$(this).val()){
-        for(let i=0;i < myData.documents.length && i <= 15;i++){
+        for(let i=0;i < myData.documents.length && i < 15;i++){
             // console.log(myData.documents[i]);
             // obj = myData.documents[i];
             // console.log(myData.documents[i].title);
@@ -101,6 +104,7 @@ $("#mySearch").on("paste keyup", function() {
             // email = myData.documents[i].email.toUpperCase();
             // console.log(myData.documents[i]);
             numm++;
+            document.getElementById('count').innerHTML = numm;
 
             tr = document.createElement('tr');
             document.getElementById('docscontainer').appendChild(tr);
@@ -165,9 +169,8 @@ $("#mySearch").on("paste keyup", function() {
             itag.setAttribute('class', 'fas fa-trash');
             button.appendChild(itag);
         }
-    }
-
-    for(let i=0;i < myData.documents.length;i++){
+    }else{
+        for(let i=0;i < myData.documents.length;i++){
             name = myData.documents[i].patient_name.toUpperCase();
             date = myData.documents[i].created_at.toUpperCase()
             if(date.includes($(this).val().toUpperCase()) || name.includes($(this).val().toUpperCase())){
@@ -263,6 +266,7 @@ $("#mySearch").on("paste keyup", function() {
                 // console.log(myData.documents[i]);
             }
         }
+    }    
     });
 </script>
 
