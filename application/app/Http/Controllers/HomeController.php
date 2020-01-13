@@ -96,7 +96,7 @@ class HomeController extends Controller
                 return response()->download(dirname(dirname(public_path())).'/gg/'.$document->id.'.'.$document->extension);
             }
 
-        }elseif(Auth::user()->role_id == 3){
+        }elseif(Auth::user()->role_id == 4){
 
             if($document->doctor_code == Auth::user()->name){
                 $document->downloaded = 1;

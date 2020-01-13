@@ -33,6 +33,8 @@ Route::group(['name' => 'authenticated', 'middleware' => ['auth']], function(){
 
     Route::get('/download_document/{document_id}', 'HomeController@download');
 
+    Route::get('/document_download/{document_id}', 'HomeController@download');
+
     Route::post('/change_credentials', 'HomeController@changeCredentials');
 
 });

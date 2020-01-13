@@ -15,7 +15,7 @@ class DoctorsController extends Controller
         $users = User::where('role_id', '=', 4)->sortable()->paginate(15);
 
         foreach($users as $user){
-            $documents = Document::where('agreement_code', '=', $user->name)->get();
+            $documents = Document::where('doctor_code', '=', $user->name)->get();
             $user->documents = $documents;
         }
 

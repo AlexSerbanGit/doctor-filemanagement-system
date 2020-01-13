@@ -8,7 +8,7 @@
             <h1>
                 Documents
             </h1>
-            <h5>(Showing {{$documents->count()}} of {{$total}} documents)</h5> 
+            <h5>(Showing <tag-random id="count">{{$documents->count()}}</tag-random> of {{$total}} documents)</h5> 
         </div>
         {{-- <input type="text" id="searchh" class="form-control" > --}}
         <div class="container">
@@ -89,19 +89,23 @@ $(document).ready(function(){
 baseUrl = "{{ url('/') }}";
 $("#mySearch").on("paste keyup", function() {
     document.getElementById('docscontainer').innerHTML = '';
-    console.log(myData);
     numm = 0;
     
     if(!$(this).val()){
         for(let i=0;i < myData.documents.length && i <= 15;i++){
-            console.log(myData.documents[i]);
-            name = myData.documents[i].name.toUpperCase();
-            email = myData.documents[i].email.toUpperCase();
+            // console.log(myData.documents[i]);
+            // obj = myData.documents[i];
+            // console.log(myData.documents[i].title);
 
+            // name = myData.documents[i]['name'].toUpperCase();
+            // email = myData.documents[i].email.toUpperCase();
+            // console.log(myData.documents[i]);
             numm++;
 
             tr = document.createElement('tr');
             document.getElementById('docscontainer').appendChild(tr);
+            td = document.createElement('td');
+            tr.appendChild(td);
 
             td = document.createElement('td');
             td.innerHTML = numm;
@@ -109,40 +113,54 @@ $("#mySearch").on("paste keyup", function() {
             tr.appendChild(td);
 
             td = document.createElement('td');
-            td.innerHTML = myData.documents[i].name;
+            td.innerHTML = myData.documents[i].title;
             tr.appendChild(td);
 
             td = document.createElement('td');
-            td.innerHTML = myData.documents[i].email;
+            td.innerHTML = myData.documents[i].created_at;
             tr.appendChild(td);
 
             td = document.createElement('td');
-            td.innerHTML = myData.documents[i].phone_number;
+            if(myData.documents[i].role_id == 2){
+                td.innerHTML = 'Patient';
+            }
+            if(myData.documents[i].role_id == 3){
+                td.innerHTML = 'Convenant';
+            }
+            if(myData.documents[i].role_id == 4){
+                td.innerHTML = 'Doctor';
+            }
             tr.appendChild(td);
 
             td = document.createElement('td');
-            td.innerHTML = myData.documents[i].docs;
+            if(myData.documents[i].downloaded == 0){
+                td.innerHTML = 'No';
+            }else{
+                td.innerHTML = 'Yes';
+            }
             tr.appendChild(td);
 
             td = document.createElement('td');
             tr.appendChild(td);
+            aa = document.createElement('a');
+            aa.setAttribute('href', baseUrl+'/download_document/'+myData.documents[i].id);
+            td.appendChild(aa);
             button = document.createElement('button');
             button.setAttribute('type', 'button');
-            button.setAttribute('class', 'btn btn-warning');
-            button.setAttribute('data-toggle', 'modal');
-            button.setAttribute('data-target', '#editUser'+myData.documents[i].id);
+            button.setAttribute('class', 'btn btn-success');
             button.style.marginRight = '5px';
-            td.appendChild(button);
+            aa.appendChild(button);
             itag = document.createElement('i');
-            itag.setAttribute('class', 'fas fa-edit');
+            itag.setAttribute('class', 'fas fa-download');
             button.appendChild(itag);
-
+            
+            aa = document.createElement('a');
+            aa.setAttribute('href', baseUrl+'/admin/delete_document/'+myData.documents[i].id);
+            td.appendChild(aa);
             button = document.createElement('button');
             button.setAttribute('type', 'button');
             button.setAttribute('class', 'btn btn-danger');
-            button.setAttribute('data-toggle', 'modal');
-            button.setAttribute('data-target', '#deleteUser'+myData.documents[i].id);
-            td.appendChild(button);
+            aa.appendChild(button);
             itag = document.createElement('i');
             itag.setAttribute('class', 'fas fa-trash');
             button.appendChild(itag);
@@ -154,6 +172,7 @@ $("#mySearch").on("paste keyup", function() {
             date = myData.documents[i].created_at.toUpperCase()
             if(date.includes($(this).val().toUpperCase()) || name.includes($(this).val().toUpperCase())){
                 numm++;
+                document.getElementById('count').innerHTML = numm;
 
                 tr = document.createElement('tr');
                 document.getElementById('docscontainer').appendChild(tr);
@@ -182,6 +201,14 @@ $("#mySearch").on("paste keyup", function() {
                 }
                 if(myData.documents[i].role_id == 4){
                     td.innerHTML = 'Doctor';
+                }
+                tr.appendChild(td);
+
+                td = document.createElement('td');
+                if(myData.documents[i].downloaded == 0){
+                    td.innerHTML = 'No';
+                }else{
+                    td.innerHTML = 'Yes';
                 }
                 tr.appendChild(td);
 
