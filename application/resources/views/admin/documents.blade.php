@@ -171,7 +171,7 @@ $("#mySearch").on("paste keyup", function() {
         }
     }else{
         for(let i=0;i < myData.documents.length;i++){
-            name = myData.documents[i].patient_name.toUpperCase();
+            name = myData.documents[i].title.toUpperCase();
             date = myData.documents[i].created_at.toUpperCase()
             if(date.includes($(this).val().toUpperCase()) || name.includes($(this).val().toUpperCase())){
                 numm++;
