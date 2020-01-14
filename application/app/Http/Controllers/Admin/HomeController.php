@@ -68,7 +68,8 @@ class HomeController extends Controller
             $start = new Carbon('last day of last month');
             
             // get doctor docs in current month
-            $doctor_docs = Document::where('doctor_code', '=', $doc->name)->where('created_at', '>', $start)->get()->count();
+            // $doctor_docs = Document::where('doctor_code', '=', $doc->name)->where('created_at', '>', $start)->get()->count();
+            $doctor_docs = Document::where('doctor_code', '=', $doc->name)->get()->count();
 
             $names[$i] = $doc->name;
             $docs_array[$i] = $doctor_docs;
