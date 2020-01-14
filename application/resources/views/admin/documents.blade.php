@@ -46,7 +46,7 @@
                         <a href="{{ url('/download_document/'.$document->id) }}">
                             <button type="button" class="btn btn-success"><i class="fas fa-download"></i></button>
                         </a>
-                        <a href="{{ url('admin/delete_document/'.$document->id) }}"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a>
+                        <a href="{{ url('admin/delete_document/'.$document->id) }}"><button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button></a>
                     </td>
                 </tr>
                 @endforeach

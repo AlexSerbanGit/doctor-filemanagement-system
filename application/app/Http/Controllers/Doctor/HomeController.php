@@ -12,9 +12,11 @@ class HomeController extends Controller
     
     public function index(){
         $documents = Document::where('doctor_code', '=', Auth::user()->name)->paginate(15);
+        $total = Document::where('doctor_code', '=', Auth::user()->name)->get()->count();
 
         return view('convenant.home')->with([
             'documents' => $documents,
+            'total' => $total,
         ]);
     }
 

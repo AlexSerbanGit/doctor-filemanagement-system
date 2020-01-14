@@ -18,6 +18,21 @@ class HomeController extends Controller
         ]);
     }
 
+    public function documentsForUser($user_id){
+        $user = User::find($user_id);
+
+        if($user->role_id == 2){
+            $documents = $user->documents;
+        }elseif($user->role_id == 3){
+            $documents = Document::where('agreement_code', '=', $user->name)->get();
+        }elseif($user->role_id == 4){
+            $documents = Document::where('doctor_code', '=', $user->name)->get();
+        }
+        return response()->json([
+            'documents' => $documents,
+        ]);
+    }
+
     public function getUsers($id){
 
         if($id >= 1 && $id <= 4){

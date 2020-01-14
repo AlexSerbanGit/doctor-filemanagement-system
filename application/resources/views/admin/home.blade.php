@@ -75,22 +75,20 @@
     <div id="app">
         {!! $chart->container() !!}
     </div>
+    <div id="app2">
+        {!! $chart2->container() !!}
+    </div>
     <script src="https://unpkg.com/vue"></script>
     <script src=https://cdnjs.cloudflare.com/ajax/libs/echarts/4.0.2/echarts-en.min.js charset=utf-8></script>
     {!! $chart->script() !!}
+    {!! $chart2->script() !!}
     <script>
         var app = new Vue({
             el: '#app',
         });
-
-        var config = {
-            data: {
-                datasets: [{
-                    backgroundColor: window.chartColors.red,
-                    borderColor: window.chartColors.red,
-                }]
-            },
-        }
+        var app = new Vue({
+            el: '#app2',
+        });
     </script>
 </div>
 

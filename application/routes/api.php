@@ -19,4 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/get_documents', 'Api\HomeController@documents');
 
+Route::get('/get_documents/{doctor_convenant_id}', 'Api\HomeController@documentsForUser');
+
 Route::get('/get_users/{role_id}', 'Api\HomeController@getUsers');
