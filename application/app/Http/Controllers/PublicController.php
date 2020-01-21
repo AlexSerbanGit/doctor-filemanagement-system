@@ -67,4 +67,18 @@ class PublicController extends Controller
 
     }
 
+    public function downloadPatient($protocol, $password){
+
+        $document = Document::where('patient_protocol', $protocol)->where('patient_password', $password)->first();
+
+        if($document){
+            $document->downloaded = 1;
+            $document->save();
+            return response()->download(dirname(dirname(public_path())).'/gg/'.$document->id.'.'.$document->extension);
+        }
+    
+        return redirect()->back();
+
+    }
+
 }

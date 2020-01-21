@@ -9,8 +9,9 @@ use Auth;
 class HomeController extends Controller
 {
 
-    public function index(){
-        $documents = Auth::user()->documents()->paginate(15);
+    public function index(){       
+
+        $documents = Auth::user()->documents()->sortable()->paginate(15);
         $total = Auth::user()->documents()->get()->count();
 
         return view('patient.home')->with([

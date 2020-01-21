@@ -46,7 +46,8 @@
 @foreach ($documents as $document)
 
 <div class="alert alert-success" style="margin-top: 10px">
-    {{$document->title}} <a  style="position: absolute;right: 10px; top: 5px" download="{{$document->id.'.'.$document->extension}}" href="{{ url('/gg/'.$document->id.'.'.$document->extension) }}"><button class="btn btn-success"><i class="fas fa-download"></i></button></a>
+    <!-- {{$document->title}} <a  style="position: absolute;right: 10px; top: 5px" download="{{$document->id.'.'.$document->extension}}" href="{{ url('/gg/'.$document->id.'.'.$document->extension) }}"><button class="btn btn-success"><i class="fas fa-download"></i></button></a> -->
+    {{$document->title}} <a  style="position: absolute;right: 10px; top: 5px"href="{{ url('/download_patient/'.$document->patient_protocol.'/'.$document->patient_password) }}"><button class="btn btn-success"><i class="fas fa-download"></i></button></a>
 </div>
 
 @endforeach

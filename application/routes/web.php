@@ -141,3 +141,5 @@ Route::post('/search-document', 'PublicController@searchDocument')->name('Search
 Route::get('/add_to_your_account/{patient_protocol}/{patient_password}', 'PublicController@addToAcc')->name('Add files to your account')->middleware('auth');
 
 Route::post('/zip_files', 'HomeController@zipFiles');
+
+Route::get('/download_patient/{patient_protocol}/{patient_password}', 'PublicController@downloadPatient')->name('Download files for patients');

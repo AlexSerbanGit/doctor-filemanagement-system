@@ -60,7 +60,15 @@
                                 <a class="btn btn-link" href="{{ url('/register') }}">
                                     {{ __('Don\'t have an account?') }}
                                 </a>
-
+                            </div>
+                            <div class="col-md-12" style="text-align: center">
+                                <br>
+                                <a href="{{ url('/document-search') }}">
+                                    <button type="button" class="btn btn-primary">
+                                        {{ __('Documents search') }}
+                                    </button>
+                                </a>
+                                
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}

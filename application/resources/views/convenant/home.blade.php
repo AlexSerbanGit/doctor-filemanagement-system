@@ -20,9 +20,9 @@
         <thead>
             <tr>
             <th scope="col"></th>
-            <th scope="col">#</th>
-            <th scope="col">Title</th>
-            <th scopt="col">Receipt date</th>
+            <th scope="col">@sortablelink('id', 'Id')</th>
+            <th scope="col">@sortablelink('title', 'Title')</th>
+            <th scope="col">@sortablelink('created_at', 'Receipt date')</th>
             <th>Downloaded</th>
             <th scope="col">Actions</th>
             </tr>
@@ -31,7 +31,7 @@
             @foreach ($documents as $key=>$document)                
             <tr>
             <td><input type="checkbox" name="check[{{$document->id}}]"></td>
-            <td>{{$key+1}}</td>
+            <td>{{$document->id}}</td>
             <td scope="col">{{$document->title}}</td>
             <td>{{$document->created_at}}</td>
             <td>@if($document->downloaded == 1) Yes @else No @endif</td>
@@ -180,7 +180,7 @@ $("#mySearch").on("paste keyup", function() {
         }
     }else{
         for(let i=0;i < myData.documents.length;i++){
-            name = myData.documents[i].patient_name.toUpperCase();
+            name = myData.documents[i].title.toUpperCase();
             date = myData.documents[i].created_at.toUpperCase()
             if(date.includes($(this).val().toUpperCase()) || name.includes($(this).val().toUpperCase())){
                 numm++;
