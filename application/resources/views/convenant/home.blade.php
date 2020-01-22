@@ -131,6 +131,14 @@ $("#mySearch").on("paste keyup", function() {
             tr.appendChild(td);
 
             td = document.createElement('td');
+            td.className = 'text-center';
+            tr.appendChild(td);
+            inp = document.createElement('input');
+            inp.setAttribute('type', 'checkbox');
+            inp.setAttribute('name', 'check['+myData.documents[i].id+']');
+            td.appendChild(inp);
+
+            td = document.createElement('td');
             td.innerHTML = numm;
             td.className = 'text-center';
             tr.appendChild(td);
@@ -190,6 +198,14 @@ $("#mySearch").on("paste keyup", function() {
                 document.getElementById('docscontainer').appendChild(tr);
                 td = document.createElement('td');
                 tr.appendChild(td);
+
+                td = document.createElement('td');
+                td.className = 'text-center';
+                tr.appendChild(td);
+                inp = document.createElement('input');
+                inp.setAttribute('type', 'checkbox');
+                inp.setAttribute('name', 'check['+myData.documents[i].id+']');
+                td.appendChild(inp);
 
                 td = document.createElement('td');
                 td.innerHTML = numm;
