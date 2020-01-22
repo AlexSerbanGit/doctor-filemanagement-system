@@ -8,6 +8,12 @@
         <div class="alert alert-primary">
             <h1>Your documents</h1>
             <h5>(Showing <tag-random id="count">{{$documents->count()}}</tag-random> of {{$total}} documents)</h5> 
+            <br>
+            <a href="{{ url('/document-search') }}">
+                <button type="button" class="btn btn-primary">
+                    {{ __('Search documents') }}
+                </button>
+            </a>
         </div>
         <div class="container">
             <div class="form-group">

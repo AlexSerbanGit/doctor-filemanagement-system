@@ -29,7 +29,7 @@
   <tbody id="docscontainer">
     @foreach ($users as $key=>$user)
     <tr>
-      <th scope="row">{{$user->id}}</th>
+      <td>{{$user->id}}</td>
       <td>{{$user->name}}</td>
       <td>{{$user->email}}</td>
       <td>{{$user->phone_number}}</td>
